@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14301f">
+<title>Secret Santa 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<button id="mute" class="icon-btn" aria-label="Toggle sound" title="Sound">🔇</button>
+
+<main>
+  <!-- Step 1: who are you -->
+  <section id="step-who" class="card">
+    <p class="eyebrow">🎄 You've been invited</p>
+    <h1 id="title">Secret Santa</h1>
+    <p class="lede">Eight people. Eight gifts. One very secret draw.<br>Tap your name to begin.</p>
+    <div id="countdown" class="countdown" hidden></div>
+    <div id="names" class="names" role="list"></div>
+  </section>
+
+  <!-- Step 2: enter code -->
+  <section id="step-code" class="card" hidden>
+    <button class="back" id="back">← Not me</button>
+    <p class="eyebrow">Hello, <span id="who-name"></span></p>
+    <h2>Enter your secret code</h2>
+    <p class="lede">The 6-character code that was sent to you privately.</p>
+    <form id="code-form" autocomplete="off">
+      <input id="code" inputmode="text" autocapitalize="characters" autocorrect="off" spellcheck="false" maxlength="6" placeholder="••••••" aria-label="Secret code">
+      <button type="submit" class="primary" id="go">Open my gift tag</button>
+    </form>
+    <p id="error" class="error" role="alert" hidden>That code doesn't match. Check for a typo and try again.</p>
+  </section>
+
+  <!-- Step 3: reveal -->
+  <section id="step-reveal" class="card" hidden>
+    <p class="eyebrow">Your mission, <span id="who-name2"></span></p>
+    <div id="gift" class="gift" role="button" tabindex="0" aria-label="Tap to unwrap">
+      <div class="lid"><span class="bow">🎀</span></div>
+      <div class="box"></div>
+      <div class="tag-pop" id="result" aria-live="polite">
+        <span class="small">You're buying for</span>
+        <strong id="giftee"></strong>
+      </div>
+    </div>
+    <p id="tap-hint" class="hint">Tap the gift to unwrap</p>
+
+    <div id="after" hidden>
+      <p class="shh">🤫 Shh. Tell no one. Not even a hint.</p>
+      <dl id="details" class="details"></dl>
+      <div class="actions">
+        <a id="ics" class="ghost" hidden>📅 Add exchange day to calendar</a>
+        <button id="hide" class="ghost">Hide it now</button>
+      </div>
+      <details class="rules">
+        <summary>The rules of the game</summary>
+        <ul>
+          <li>Keep your giftee a secret until the exchange.</li>
+          <li>Stick to the budget. Thoughtful beats expensive.</li>
+          <li>Put a gift tag on it, but leave your name off.</li>
+          <li>Wrapped gifts only. Newspaper counts if it's funny.</li>
+          <li>No spoiling the draw by comparing notes. Tempting, I know.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <footer>Made with ❄️ and a suspicious amount of cocoa</footer>
+</main>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
